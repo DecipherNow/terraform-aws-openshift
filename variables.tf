@@ -2,6 +2,10 @@ variable "platform_name" {
   description = "The name of the cluster that is used for tagging some resources"
 }
 
+variable "platform_private_key_pem" {
+  description = "The private key for remote shell access to the cluster nodes"
+}
+
 variable "operator_cidrs" {
   type        = "list"
   default     = ["0.0.0.0/0"]

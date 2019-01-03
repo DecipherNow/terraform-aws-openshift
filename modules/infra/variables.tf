@@ -2,6 +2,8 @@ variable "platform_name" {}
 
 variable "platform_vpc_id" {}
 
+variable "platform_private_key_pem" {}
+
 variable "public_subnet_ids" {
   type    = "list"
   default = []

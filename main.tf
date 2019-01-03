@@ -18,6 +18,7 @@ module "infra" {
 
   use_spot = "${var.use_spot}"
 
+  platform_private_key_pem   = "${var.platform_private_key_pem}"
   master_count               = "${var.master_count}"
   master_instance_type       = "${var.master_instance_type}"
   compute_node_count         = "${var.compute_node_count}"
