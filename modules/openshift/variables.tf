@@ -1,5 +1,11 @@
 variable "platform_name" {}
 
+variable "google_client_id" {}
+
+variable "google_client_secret" {}
+
+variable "google_client_domain" {}
+
 variable "rh_subscription_pool_id" {
   description = "Red Hat subscription pool id for OpenShift Container Platform"
   default     = ""

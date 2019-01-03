@@ -6,6 +6,18 @@ variable "platform_private_key_pem" {
   description = "The private key for remote shell access to the cluster nodes"
 }
 
+variable "google_client_id" {
+  description = "The client id for Google OAuth login"
+}
+
+variable "google_client_secret" {
+  description = "The client secret for Google OAuth login"
+}
+
+variable "google_client_domain" {
+  description = "The domain from which Google OAuth logins are accepted"
+}
+
 variable "operator_cidrs" {
   type        = "list"
   default     = ["0.0.0.0/0"]

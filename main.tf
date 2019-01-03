@@ -23,6 +23,7 @@ module "infra" {
   master_instance_type       = "${var.master_instance_type}"
   compute_node_count         = "${var.compute_node_count}"
   compute_node_instance_type = "${var.compute_node_instance_type}"
+
 }
 
 module "domain" {
@@ -52,4 +53,8 @@ module "openshift" {
   public_certificate_pem              = "${module.domain.public_certificate_pem}"
   public_certificate_key              = "${module.domain.public_certificate_key}"
   public_certificate_intermediate_pem = "${module.domain.public_certificate_intermediate_pem}"
+
+  google_client_id           = "${var.google_client_id}"
+  google_client_secret       = "${var.google_client_secret}"
+  google_client_domain       = "${var.google_client_domain}"
 }
