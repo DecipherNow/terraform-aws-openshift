@@ -18,6 +18,10 @@ variable "google_client_domain" {
   description = "The domain from which Google OAuth logins are accepted"
 }
 
+variable "platform_domain_certificate_private_key_pem" {
+  description = "The private key for which a CSR is generated for LetsEncrypt"
+}
+
 variable "operator_cidrs" {
   type        = "list"
   default     = ["0.0.0.0/0"]

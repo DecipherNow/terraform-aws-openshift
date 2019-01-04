@@ -11,13 +11,9 @@ resource "acme_registration" "platform_domain_administrator" {
   email_address   = "${var.platform_domain_administrator_email}"
 }
 
-resource "tls_private_key" "platform_domain_csr" {
-  algorithm = "RSA"
-}
-
 resource "tls_cert_request" "platform_domain" {
   key_algorithm   = "RSA"
-  private_key_pem = "${tls_private_key.platform_domain_csr.private_key_pem}"
+  private_key_pem = "${var.platform_domain_certificate_private_key_pem}"
 
   dns_names = ["${var.platform_domain}"]
 

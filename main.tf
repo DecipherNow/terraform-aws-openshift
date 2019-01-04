@@ -29,10 +29,11 @@ module "infra" {
 module "domain" {
   source = "modules/domain"
 
-  platform_name                       = "${var.platform_name}"
-  platform_domain                     = "${var.platform_domain}"
-  platform_domain_administrator_email = "${var.platform_domain_administrator_email}"
-  public_lb_arn                       = "${module.infra.public_lb_arn}"
+  platform_name                                 = "${var.platform_name}"
+  platform_domain                               = "${var.platform_domain}"
+  platform_domain_administrator_email           = "${var.platform_domain_administrator_email}"
+  platform_domain_certificate_private_key_pem   = "${var.platform_domain_certificate_private_key_pem}"
+  public_lb_arn                                 = "${module.infra.public_lb_arn}"
 }
 
 module "openshift" {
@@ -43,7 +44,7 @@ module "openshift" {
 
   bastion_ssh_user        = "${module.infra.bastion_ssh_user}"
   bastion_endpoint        = "${module.infra.bastion_endpoint}"
-  platform_private_key    = "${module.infra.platform_private_key}"
+  platform_private_key    = "${var.platform_private_key_pem}"
   rhn_username            = "${var.rhn_username}"
   rhn_password            = "${var.rhn_password}"
   rh_subscription_pool_id = "${var.rh_subscription_pool_id}"
@@ -51,7 +52,7 @@ module "openshift" {
   master_domain                       = "${module.infra.master_domain}"
   platform_domain                     = "${var.platform_domain}"
   public_certificate_pem              = "${module.domain.public_certificate_pem}"
-  public_certificate_key              = "${module.domain.public_certificate_key}"
+  public_certificate_key              = "${var.platform_domain_certificate_private_key_pem}"
   public_certificate_intermediate_pem = "${module.domain.public_certificate_intermediate_pem}"
 
   google_client_id           = "${var.google_client_id}"

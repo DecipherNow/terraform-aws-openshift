@@ -6,11 +6,6 @@ output "bastion_endpoint" {
   value = "${aws_eip.bastion.public_ip}"
 }
 
-output "platform_private_key" {
-  sensitive = true
-  value     = "${data.tls_public_key.platform.private_key_pem}"
-}
-
 output "public_lb_arn" {
   value = "${aws_lb.public.arn}"
 }
