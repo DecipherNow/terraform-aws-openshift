@@ -83,7 +83,7 @@ variable "platform_domain_administrator_email" {
 
 variable "identity_providers" {
     type        = "list"
-    description = "The identity providers to enable (AllowAllIdentityProvider, GoogleIdentityProvider)"
+    description = "The identity providers to enable (AllowAllIdentityProvider, GoogleIdentityProvider, HTPasswdPasswordIdentityProvider)"
     default     = [
         "AllowAllIdentityProvider"
     ]
