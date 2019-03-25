@@ -38,6 +38,8 @@ module "domain" {
   platform_domain                     = "${var.platform_domain}"
   platform_domain_administrator_email = "${var.platform_domain_administrator_email}"
   public_lb_arn                       = "${module.infra.public_lb_arn}"
+
+  use_staging_acme = "${var.use_staging_acme}"
 }
 
 module "openshift" {

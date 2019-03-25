@@ -132,3 +132,8 @@ variable "pub_subnet_count" {
   default     = "100"
   description = "Sets a desired number of subnets Terraform will attempt to use.  This value is compared to the total number of subnets available in the selected region and uses the min of the two values"
 }
+
+variable "use_staging_acme" {
+  default     = false
+  description = "Determine if the LetsEncrypt module should use the development API or the production.  Helpful for development and debugging purposes.  Avoids LetsEncrypt's rate limits"
+}
