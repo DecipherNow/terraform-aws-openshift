@@ -2,7 +2,7 @@
 
 # For Outbound access
 locals {
-  private_subnet_count = "${length(data.aws_availability_zones.available.names)}"
+  private_subnet_count = "${min(var.priv_subnet_count, length(data.aws_availability_zones.available.names))}"
 }
 
 resource "aws_subnet" "private" {

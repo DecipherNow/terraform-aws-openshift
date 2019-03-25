@@ -2,6 +2,9 @@ module "network" {
   source        = "modules/network"
   platform_name = "${var.platform_name}"
   platform_cidr = "${var.platform_cidr}"
+
+  pub_subnet_count  = "${var.pub_subnet_count}"
+  priv_subnet_count = "${var.priv_subnet_count}"
 }
 
 module "infra" {

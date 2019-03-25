@@ -1,7 +1,7 @@
 # Public subnet: for router LB
 
 locals {
-  public_subnet_count = "${length(data.aws_availability_zones.available.names)}"
+  public_subnet_count = "${min(var.pub_subnet_count, length(data.aws_availability_zones.available.names))}"
 }
 
 resource "aws_subnet" "public" {

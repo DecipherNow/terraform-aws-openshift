@@ -116,3 +116,13 @@ variable "openshift_cluster_cidr" {
 variable "platform_cidr" {
   default = "10.0.0.0/16"
 }
+
+variable "priv_subnet_count" {
+  default     = "100"
+  description = "Sets a desired number of subnets Terraform will attempt to use.  This value is compared to the total number of subnets available in the selected region and uses the min of the two values"
+}
+
+variable "pub_subnet_count" {
+  default     = "100"
+  description = "Sets a desired number of subnets Terraform will attempt to use.  This value is compared to the total number of subnets available in the selected region and uses the min of the two values"
+}
