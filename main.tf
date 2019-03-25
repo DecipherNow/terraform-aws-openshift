@@ -6,10 +6,10 @@ module "network" {
 module "infra" {
   source = "modules/infra"
 
-  platform_name = "${var.platform_name}"
-  use_community = "${var.use_community}"
-  use_specific_base_image = "${var.use_specific_base_image}"
-  specific_base_image_id = "${var.specific_base_image_id}"
+  platform_name                        = "${var.platform_name}"
+  use_community                        = "${var.use_community}"
+  use_specific_base_image              = "${var.use_specific_base_image}"
+  specific_base_image_id               = "${var.specific_base_image_id}"
   specific_base_image_root_device_name = "${var.specific_base_image_root_device_name}"
 
   platform_vpc_id    = "${module.network.platform_vpc_id}"
@@ -55,9 +55,9 @@ module "openshift" {
   public_certificate_key              = "${module.domain.public_certificate_key}"
   public_certificate_intermediate_pem = "${module.domain.public_certificate_intermediate_pem}"
 
-  identity_providers         = "${var.identity_providers}"
+  identity_providers = "${var.identity_providers}"
 
-  google_client_id           = "${var.google_client_id}"
-  google_client_secret       = "${var.google_client_secret}"
-  google_client_domain       = "${var.google_client_domain}"
+  google_client_id     = "${var.google_client_id}"
+  google_client_secret = "${var.google_client_secret}"
+  google_client_domain = "${var.google_client_domain}"
 }
