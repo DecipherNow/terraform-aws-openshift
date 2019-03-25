@@ -5,3 +5,5 @@ variable "platform_domain" {}
 variable "platform_domain_administrator_email" {}
 
 variable "public_lb_arn" {}
+
+variable "use_staging_acme" {}
