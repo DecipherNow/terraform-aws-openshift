@@ -106,3 +106,13 @@ variable "google_client_domain" {
   description = "The domain used by the GoogleIdentityProvider"
   default     = ""
 }
+
+variable "openshift_cluster_cidr" {
+  type        = "string"
+  default     = "10.128.0.0/14"
+  description = "This variable overrides the SDN cluster network CIDR block. This is the network from which pod IPs are assigned. Specify a private block that does not conflict with existing network blocks in your infrastructure to which pods, nodes, or the master might require access"
+}
+
+variable "platform_cidr" {
+  default = "10.0.0.0/16"
+}

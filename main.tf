@@ -1,6 +1,7 @@
 module "network" {
   source        = "modules/network"
   platform_name = "${var.platform_name}"
+  platform_cidr = "${var.platform_cidr}"
 }
 
 module "infra" {
@@ -60,4 +61,6 @@ module "openshift" {
   google_client_id     = "${var.google_client_id}"
   google_client_secret = "${var.google_client_secret}"
   google_client_domain = "${var.google_client_domain}"
+
+  openshift_cluster_cidr = "${var.openshift_cluster_cidr}"
 }
