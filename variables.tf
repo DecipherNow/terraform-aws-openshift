@@ -39,7 +39,6 @@ variable "use_community" {
   default     = false
 }
 
-
 variable "use_specific_base_image" {
   description = "Indicates whether the module should use a specific base image or find the latest."
   default     = false
@@ -82,27 +81,28 @@ variable "platform_domain_administrator_email" {
 }
 
 variable "identity_providers" {
-    type        = "list"
-    description = "The identity providers to enable (AllowAllIdentityProvider, GoogleIdentityProvider, HTPasswdPasswordIdentityProvider)"
-    default     = [
-        "AllowAllIdentityProvider"
-    ]
+  type        = "list"
+  description = "The identity providers to enable (AllowAllIdentityProvider, GoogleIdentityProvider, HTPasswdPasswordIdentityProvider)"
+
+  default = [
+    "AllowAllIdentityProvider",
+  ]
 }
 
 variable "google_client_id" {
-    type        = "string"
-    description = "The Google client id used by the GoogleIdentityProvider"
-    default     = ""
+  type        = "string"
+  description = "The Google client id used by the GoogleIdentityProvider"
+  default     = ""
 }
 
 variable "google_client_secret" {
-    type        = "string"
-    description = "The client secret used by the GoogleIdentityProvider"
-    default     = ""
+  type        = "string"
+  description = "The client secret used by the GoogleIdentityProvider"
+  default     = ""
 }
 
 variable "google_client_domain" {
-    type        = "string"
-    description = "The domain used by the GoogleIdentityProvider"
-    default     = ""
+  type        = "string"
+  description = "The domain used by the GoogleIdentityProvider"
+  default     = ""
 }
