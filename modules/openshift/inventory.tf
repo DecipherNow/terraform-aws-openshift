@@ -20,6 +20,7 @@ data "template_file" "template_inventory" {
     google_client_domain            = "${var.google_client_domain}"
     use_htpasswd_identity_provider  = "${contains(var.identity_providers, "HTPasswdPasswordIdentityProvider")}"
     openshift_cluster_cidr          = "${var.openshift_cluster_cidr}"
+    openshift_services_cidr         = "${var.openshift_services_cidr}"
   }
 }
 

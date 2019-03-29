@@ -65,5 +65,6 @@ module "openshift" {
   google_client_secret = "${var.google_client_secret}"
   google_client_domain = "${var.google_client_domain}"
 
-  openshift_cluster_cidr = "${var.openshift_cluster_cidr}"
+  openshift_cluster_cidr  = "${var.openshift_cluster_cidr}"
+  openshift_services_cidr = "${var.openshift_services_cidr}"
 }
