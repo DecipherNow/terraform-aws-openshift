@@ -37,6 +37,7 @@ ${use_htpasswd_identity_provider == "true" ? "" : "#"}        kind: HTPasswdPass
 ${use_htpasswd_identity_provider == "true" ? "" : "#"}        filename: /etc/origin/master/htpasswd
     os_sdn_network_plugin_name: 'redhat/openshift-ovs-networkpolicy'
     osm_cluster_network_cidr: ${openshift_cluster_cidr}
+    openshift_portal_net: ${openshift_services_cidr}
     openshift_disable_check: 'disk_availability,memory_availability,docker_image_availability'
     openshift_master_cluster_hostname: ${master_domain}
     openshift_master_cluster_public_hostname: ${platform_domain}
