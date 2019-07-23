@@ -53,6 +53,7 @@ ${use_htpasswd_identity_provider == "true" ? "" : "#"}        filename: /etc/ori
     openshift_master_admission_plugin_config: '{ "MutatingAdmissionWebhook": { "configuration": { "apiVersion": "apiserver.config.k8s.io/v1alpha1", "kubeConfigFile": "/etc/origin/master/admin.kubeconfig", "kind": "WebhookAdmission" } }, "ValidatingAdmissionWebhook": { "configuration": { "apiVersion": "apiserver.config.k8s.io/v1alpha1", "kubeConfigFile": "/etc/origin/master/admin.kubeconfig", "kind": "WebhookAdmission" } } }'
     openshift_cluster_admin_users:
     - admin
+    openshift_docker_options: ' --log-driver=json-file --log-opt max-size=10M --log-opt max-file=3'
 ${openshift_deployment_type == "openshift-enterprise" ? "" : "#"}    oreg_auth_user: "${rhn_username}"
 ${openshift_deployment_type == "openshift-enterprise" ? "" : "#"}    oreg_auth_password: "${rhn_password}"
 ${openshift_deployment_type == "openshift-enterprise" ? "" : "#"}    openshift_additional_registry_credentials:
