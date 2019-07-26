@@ -71,3 +71,6 @@ ${named_certificate ? "" : "#"}    openshift_hosted_router_certificate:
 ${named_certificate ? "" : "#"}      certfile: '/home/${ansible_user}/public_certificate.pem'
 ${named_certificate ? "" : "#"}      keyfile: '/home/${ansible_user}/public_certificate.key'
 ${named_certificate ? "" : "#"}      cafile: '/home/${ansible_user}/public_certificate_intermediate.pem'
+${enable_metrics == "true" ? "" : "#"}    openshift_metrics_install_metrics: true
+${enable_metrics == "true" ? "" : "#"}    openshift_metrics_hawkular_hostname: metrics.${platform_domain}
+${enable_metrics == "true" ? "" : "#"}    openshift_metrics_cassandra_storage_type: pv

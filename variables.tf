@@ -137,3 +137,8 @@ variable "use_staging_acme" {
   default     = false
   description = "Determine if the LetsEncrypt module should use the development API or the production.  Helpful for development and debugging purposes.  Avoids LetsEncrypt's rate limits"
 }
+
+variable "enable_metrics" {
+  default     = false
+  description = "Enable to enable Hawkler metrics in the cluster"
+}
