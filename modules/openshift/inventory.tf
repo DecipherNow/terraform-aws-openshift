@@ -21,6 +21,7 @@ data "template_file" "template_inventory" {
     use_htpasswd_identity_provider  = "${contains(var.identity_providers, "HTPasswdPasswordIdentityProvider")}"
     openshift_cluster_cidr          = "${var.openshift_cluster_cidr}"
     openshift_services_cidr         = "${var.openshift_services_cidr}"
+    enable_metrics                  = "${var.enable_metrics}"
   }
 }
 

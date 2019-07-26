@@ -83,3 +83,7 @@ variable "public_certificate_key" {
 variable "public_certificate_intermediate_pem" {
   default = ""
 }
+
+variable "enable_metrics" {
+  default = ""
+}
