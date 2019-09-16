@@ -15,8 +15,6 @@ resource "aws_launch_template" "bastion" {
 
   image_id = "${local.base_image_id}"
 
-  instance_market_options = "${local.spot_type[var.use_spot ? "enabled" : "disabled"]}"
-
   instance_type = "m4.large"
 
   iam_instance_profile {
@@ -42,13 +40,13 @@ resource "aws_launch_template" "bastion" {
 
 resource "aws_autoscaling_group" "bastion" {
   name                = "${var.platform_name}-bastion"
-  vpc_zone_identifier = ["${var.public_subnet_ids}"]
+  vpc_zone_identifier = "${var.public_subnet_ids}"
   desired_capacity    = 1
   max_size            = 1
   min_size            = 1
 
-  launch_template = {
+  launch_template {
     id      = "${aws_launch_template.bastion.id}"
-    version = "$$Latest"
+    version = "$Latest"
   }
 }

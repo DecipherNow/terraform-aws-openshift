@@ -1,7 +1,7 @@
 data "template_file" "node_config_playbook" {
   template = "${file("${path.module}/resources/node-config-playbook.yaml")}"
 
-  vars {
+  vars = {
     openshift_major_version = "${var.openshift_major_version}"
     rhn_username            = "${var.rhn_username}"
     rhn_password            = "${var.rhn_password}"
@@ -12,7 +12,7 @@ data "template_file" "node_config_playbook" {
 data "template_file" "node_config" {
   template = "${file("${path.module}/resources/node-config.sh")}"
 
-  vars {
+  vars = {
     platform_name       = "${var.platform_name}"
     platform_aws_region = "${data.aws_region.current.name}"
   }
@@ -43,7 +43,7 @@ resource "null_resource" "node_config" {
     host        = "${var.bastion_endpoint}"
   }
 
-  triggers {
+  triggers = {
     inventory = "${data.template_file.node_config_playbook.rendered}"
   }
 

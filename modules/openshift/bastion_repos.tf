@@ -1,7 +1,7 @@
 data "template_file" "bastion_repos" {
   template = "${file("${path.module}/resources/bastion-repos.sh")}"
 
-  vars {
+  vars = {
     platform_name           = "${var.platform_name}"
     rhn_username            = "${var.rhn_username}"
     rhn_password            = "${var.rhn_password}"
@@ -31,7 +31,7 @@ resource "null_resource" "bastion_repos" {
     host        = "${var.bastion_endpoint}"
   }
 
-  triggers {
+  triggers = {
     script = "${data.template_file.bastion_repos.rendered}"
   }
 }

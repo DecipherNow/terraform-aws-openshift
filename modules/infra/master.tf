@@ -16,8 +16,6 @@ resource "aws_launch_template" "master" {
 
   image_id = "${local.base_image_id}"
 
-  instance_market_options = "${local.spot_type[var.use_spot ? "enabled" : "disabled"]}"
-
   instance_type = "${var.master_instance_type}"
 
   iam_instance_profile {
@@ -40,7 +38,7 @@ resource "aws_launch_template" "master" {
 
   user_data = "${base64encode(data.template_file.master.rendered)}"
 
-  vpc_security_group_ids = ["${split(",", var.infra_node_count > 0 ? join(",", local.master_security_groups) : join(",", local.master_infra_security_groups))}"]
+  vpc_security_group_ids = "${split(",", var.infra_node_count > 0 ? join(",", local.master_security_groups) : join(",", local.master_infra_security_groups))}"
 }
 
 locals {
@@ -50,17 +48,17 @@ locals {
 
 resource "aws_autoscaling_group" "master" {
   name                = "${var.platform_name}-master"
-  vpc_zone_identifier = ["${var.private_subnet_ids}"]
+  vpc_zone_identifier = "${var.private_subnet_ids}"
   desired_capacity    = "${var.master_count}"
   max_size            = "${var.master_count}"
   min_size            = "${var.master_count}"
 
   # TODO workaround
-  target_group_arns = ["${split(",", var.infra_node_count > 0 ? join(",", local.master_target_groups) : join(",", local.master_infra_target_groups))}"]
+  target_group_arns = "${split(",", var.infra_node_count > 0 ? join(",", local.master_target_groups) : join(",", local.master_infra_target_groups))}"
   load_balancers    = ["${aws_elb.master.name}"]
 
-  launch_template = {
+  launch_template {
     id      = "${aws_launch_template.master.id}"
-    version = "$$Latest"
+    version = "$Latest"
   }
 }

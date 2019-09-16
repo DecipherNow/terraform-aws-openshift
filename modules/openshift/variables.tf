@@ -1,7 +1,7 @@
 variable "platform_name" {}
 
 variable "identity_providers" {
-  type        = "list"
+  type        = list(string)
   description = "The identity providers to enable (AllowAllIdentityProvider, GoogleIdentityProvider, HTPasswdPasswordIdentityProvider)"
 
   default = [

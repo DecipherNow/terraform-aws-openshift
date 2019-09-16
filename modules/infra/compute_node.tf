@@ -11,8 +11,6 @@ resource "aws_launch_template" "compute_node" {
 
   image_id = "${local.base_image_id}"
 
-  instance_market_options = "${local.spot_type[var.use_spot ? "enabled" : "disabled"]}"
-
   instance_type = "${var.compute_node_instance_type}"
 
   iam_instance_profile {
@@ -37,14 +35,14 @@ resource "aws_launch_template" "compute_node" {
 
 resource "aws_autoscaling_group" "compute_node" {
   name                = "${var.platform_name}-compute"
-  vpc_zone_identifier = ["${var.private_subnet_ids}"]
+  vpc_zone_identifier = "${var.private_subnet_ids}"
   desired_capacity    = "${var.compute_node_count}"
   max_size            = "${var.compute_node_count}"
   min_size            = "${var.compute_node_count}"
 
   # TODO workaround
-  launch_template = {
+  launch_template {
     id      = "${aws_launch_template.compute_node.id}"
-    version = "$$Latest"
+    version = "$Latest"
   }
 }

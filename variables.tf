@@ -3,13 +3,13 @@ variable "platform_name" {
 }
 
 variable "operator_cidrs" {
-  type        = "list"
+  type        = list(string)
   default     = ["0.0.0.0/0"]
   description = "CIDRS that is allowed from which master api can be accessed"
 }
 
 variable "public_cidrs" {
-  type        = "list"
+  type        = list(string)
   default     = ["0.0.0.0/0"]
   description = "CIDRS that is allowed from which public users can access served services in the cluster"
 }
@@ -81,7 +81,7 @@ variable "platform_domain_administrator_email" {
 }
 
 variable "identity_providers" {
-  type        = "list"
+  type        = list(string)
   description = "The identity providers to enable (AllowAllIdentityProvider, GoogleIdentityProvider, HTPasswdPasswordIdentityProvider)"
 
   default = [

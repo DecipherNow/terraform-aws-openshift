@@ -3,22 +3,22 @@ variable "platform_name" {}
 variable "platform_vpc_id" {}
 
 variable "public_subnet_ids" {
-  type    = "list"
+  type    = list(string)
   default = []
 }
 
 variable "private_subnet_ids" {
-  type    = "list"
+  type    = list(string)
   default = []
 }
 
 variable "operator_cidrs" {
-  type    = "list"
+  type    = list(string)
   default = ["0.0.0.0/0"]
 }
 
 variable "public_cidrs" {
-  type    = "list"
+  type    = list(string)
   default = ["0.0.0.0/0"]
 }
 

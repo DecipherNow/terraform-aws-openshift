@@ -1,7 +1,7 @@
 data "template_file" "openshift_applier" {
   template = "${file("${path.module}/resources/openshift-applier.sh")}"
 
-  vars {
+  vars = {
     platform_name       = "${var.platform_name}"
     platform_aws_region = "${data.aws_region.current.name}"
   }
@@ -25,7 +25,7 @@ resource "null_resource" "openshift_applier" {
     host        = "${var.bastion_endpoint}"
   }
 
-  triggers {
+  triggers = {
     script = "${data.template_file.openshift_applier.rendered}"
   }
 }

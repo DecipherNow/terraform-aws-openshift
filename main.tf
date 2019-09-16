@@ -1,5 +1,5 @@
 module "network" {
-  source        = "modules/network"
+  source        = "./modules/network"
   platform_name = "${var.platform_name}"
   platform_cidr = "${var.platform_cidr}"
 
@@ -8,7 +8,7 @@ module "network" {
 }
 
 module "infra" {
-  source = "modules/infra"
+  source = "./modules/infra"
 
   platform_name                        = "${var.platform_name}"
   use_community                        = "${var.use_community}"
@@ -17,11 +17,11 @@ module "infra" {
   specific_base_image_root_device_name = "${var.specific_base_image_root_device_name}"
 
   platform_vpc_id    = "${module.network.platform_vpc_id}"
-  public_subnet_ids  = ["${module.network.public_subnet_ids}"]
-  private_subnet_ids = ["${module.network.private_subnet_ids}"]
+  public_subnet_ids  = module.network.public_subnet_ids
+  private_subnet_ids = module.network.private_subnet_ids
 
-  operator_cidrs = ["${var.operator_cidrs}"]
-  public_cidrs   = ["${var.public_cidrs}"]
+  operator_cidrs = "${var.operator_cidrs}"
+  public_cidrs   = "${var.public_cidrs}"
 
   use_spot = "${var.use_spot}"
 
@@ -32,7 +32,7 @@ module "infra" {
 }
 
 module "domain" {
-  source = "modules/domain"
+  source = "./modules/domain"
 
   platform_name                       = "${var.platform_name}"
   platform_domain                     = "${var.platform_domain}"
@@ -43,7 +43,7 @@ module "domain" {
 }
 
 module "openshift" {
-  source = "modules/openshift"
+  source = "./modules/openshift"
 
   platform_name = "${var.platform_name}"
   use_community = "${var.use_community}"

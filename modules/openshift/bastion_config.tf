@@ -1,7 +1,7 @@
 data "template_file" "bastion_config_playbook" {
   template = "${file("${path.module}/resources/bastion-config-playbook.yaml")}"
 
-  vars {
+  vars = {
     openshift_major_version = "${var.openshift_major_version}"
   }
 }
@@ -35,7 +35,7 @@ resource "null_resource" "bastion_config" {
     host        = "${var.bastion_endpoint}"
   }
 
-  triggers {
+  triggers = {
     playbook = "${data.template_file.bastion_config_playbook.rendered}"
   }
 

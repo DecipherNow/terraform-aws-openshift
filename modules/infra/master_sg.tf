@@ -7,7 +7,7 @@ resource "aws_security_group" "master_public" {
     from_port   = 8443
     to_port     = 8443
     protocol    = "tcp"
-    cidr_blocks = ["${var.operator_cidrs}"]
+    cidr_blocks = "${var.operator_cidrs}"
   }
 
   egress {
